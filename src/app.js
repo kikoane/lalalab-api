@@ -1,9 +1,17 @@
 const express = require('express');
-const morgan = require('morgan');
+const { SERVER_PORT } = require('./config');
 
-const app = express();
+async function startServer() {
+  const app = express();
+  // eslint-disable-next-line global-require
+  await require('./loaders')(app);
+  app.listen(SERVER_PORT, () =>
+    console.log(`
+    ################################################
+    🛡️  Server listening on port: ${SERVER_PORT} 🛡️ 
+    ################################################
+    `),
+  );
+}
 
-app.use(express.json());
-app.use(morgan('dev'));
-
-module.exports = app;
+startServer();

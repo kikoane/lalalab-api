@@ -1,19 +1,43 @@
-const { MongoClient } = require('mongodb');
-const { DB_LOGIN, DB_PW } = require('../util/constants');
+const mongoose = require('mongoose');
+const { MONGODB_URI } = require('../config');
 
-const url = `mongodb+srv://${DB_LOGIN}:${DB_PW}@cluster0-mvpph.mongodb.net/test?retryWrites=true&w=majority`;
-
-const client = new MongoClient(url, { useUnifiedTopology: true });
-
-async function run() {
+module.exports = async () => {
+  let connection;
   try {
-    await client.connect();
+    connection = await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  } catch (err) {
+    console.log('error database connection');
+  }
+  return connection.connection.db;
+};
+
+/*
+async function connect() {
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log('Connected correctly to server');
   } catch (err) {
     console.log(err.stack);
-  } finally {
-    await client.close();
   }
 }
 
-run().catch(console.dir);
+const getConnect = () => mongoose.connection;
+
+async function disconnect() {
+  await mongoose.disconnect();
+  console.log('database disconnected');
+}
+
+module.exports = {
+  connect,
+  getConnect,
+  disconnect,
+};
+
+*/
