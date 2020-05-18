@@ -9,9 +9,11 @@ module.exports = (app) => {
 
   route.get('/all', controllers.getUsers);
 
+  route.get('/:name', controllers.getUser);
+
   route.delete('/all', controllers.deleteUsers);
 
-  route.get('/:name', controllers.getUser);
+  route.delete('/:name', controllers.deleteUser);
 
   route.post(
     '/',

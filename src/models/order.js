@@ -1,11 +1,28 @@
 const { Schema, model } = require('mongoose');
 
-const { ObjectId } = Schema;
+const Order = new Schema(
+  {
+    email: {
+      type: String,
+      required: [true, 'Please enter a correct email'],
+      index: true,
+    },
 
-const orderSchema = Schema({
-  _id: { type: ObjectId },
-  name: String,
-  price: Number,
-});
+    figureCount: {
+      type: Number,
+      required: [true, 'Please enter an amount of figure'],
+      index: true,
+    },
 
-module.exports = model('Order', orderSchema);
+    figurePrice: {
+      type: Number,
+      required: [true, 'Please enter the total price'],
+      index: true,
+    },
+
+    promoCode: String,
+  },
+  { timestamps: true },
+);
+
+module.exports = model('Order', Order);

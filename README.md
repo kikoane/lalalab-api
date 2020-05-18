@@ -1,13 +1,20 @@
-# Mini-API
+# TECH-TEST MiNi-API
 
-An app demonstrating simple API implementation with NodeJs, Express and MongoDb
+An app demonstrating simple API implementation with Node.js, Express and MongoDB
 
 The `api` uri preceed all API endpoints and the following endpoints are currently available
 
-- GET `/api/users/:id`
-- GET `/api/users/all`
 - POST `/api/users`
-- DELETE `/api/users/:id`
+- GET `/api/users/all`
+- GET `/api/users/:user`
+- DELETE `/api/users/all`
+- DELETE `/api/orders/:user`
+
+- POST `/api/orders`
+- GET `/api/orders/all`
+- GET `/api/orders/:id`
+- DELETE `/api/orders/all`
+- DELETE `/api/orders/:id`
 
 ## Installation
 

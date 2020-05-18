@@ -1,18 +1,29 @@
 const { Router } = require('express');
+const { celebrate, Joi } = require('celebrate');
+const controllers = require('../controllers/order');
 
-const route = Router();
+const route = new Router();
 
 module.exports = (app) => {
   app.use('/orders', route);
 
-  route.get('/', (req, res) => {
-    res.status(200).json({ message: 'Handling GET requests to /orders' });
-  });
+  route.get('/all', controllers.getOrders);
 
-  route.post('/', (req, res) => {
-    const { name, order } = req.body;
+  route.get('/:id', controllers.getOrder);
 
-    console.log({ name, order });
-    res.status(200).json({ message: 'Handling POST requests to /orders' });
-  });
+  route.delete('/all', controllers.deleteOrders);
+
+  route.delete('/:id', controllers.deleteOrder);
+
+  route.post(
+    '/',
+    celebrate({
+      body: Joi.object({
+        email: Joi.string().required(),
+        figureCount: Joi.string().required(),
+        promoCode: Joi.string(),
+      }),
+    }),
+    controllers.postOrder,
+  );
 };
