@@ -8,7 +8,7 @@ The `api` uri preceed all API endpoints and the following endpoints are currentl
 - GET `/api/users/all`
 - GET `/api/users/:user`
 - DELETE `/api/users/all`
-- DELETE `/api/orders/:user`
+- DELETE `/api/users/:user`
 
 - POST `/api/orders`
 - GET `/api/orders/all`

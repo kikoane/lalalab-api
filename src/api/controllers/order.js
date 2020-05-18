@@ -19,7 +19,7 @@ exports.getOrder = asyncHandler(async (req, res, next) => {
   if (!order) {
     return next(new ErrorResponse(404, 'Order not found'));
   }
-  res.json({ status: 'Order found', order });
+  res.status(200).json({ status: 'Order found', order });
 });
 
 exports.postOrder = asyncHandler(async (req, res, next) => {
@@ -46,7 +46,7 @@ exports.postOrder = asyncHandler(async (req, res, next) => {
 
 exports.deleteOrders = asyncHandler(async (req, res) => {
   const { deletedCount } = await Order.deleteMany();
-  res.status(200).json({ message: 'Delete orders successfuly', deletedCount });
+  res.status(200).json({ message: 'Orders deleted successfuly', deletedCount });
 });
 
 exports.deleteOrder = asyncHandler(async (req, res, next) => {
@@ -58,5 +58,5 @@ exports.deleteOrder = asyncHandler(async (req, res, next) => {
   if (!order) {
     return next(new ErrorResponse(404, 'Order not found'));
   }
-  res.json({ status: 'Delete order successfuly', order });
+  res.status(200).json({ status: 'Order deleted successfuly', order });
 });

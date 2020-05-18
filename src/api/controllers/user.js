@@ -26,7 +26,7 @@ exports.postUser = asyncHandler(async (req, res) => {
 
 exports.deleteUsers = asyncHandler(async (req, res) => {
   const { deletedCount } = await User.deleteMany();
-  res.status(200).json({ message: 'Delete users successfuly', deletedCount });
+  res.status(200).json({ message: 'Users deleted successfuly', deletedCount });
 });
 
 exports.deleteUser = asyncHandler(async (req, res, next) => {
@@ -34,5 +34,5 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
   if (!user) {
     return next(new ErrorResponse(404, 'User not found'));
   }
-  res.json({ status: 'Delete user successfuly', user });
+  res.status(200).json({ status: 'User deleted successfuly', user });
 });
