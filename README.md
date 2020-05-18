@@ -4,11 +4,15 @@ An app demonstrating simple API implementation with Node.js, Express and MongoDB
 
 The `api` uri preceed all API endpoints and the following endpoints are currently available
 
+### Users route
+
 - POST `/api/users`
 - GET `/api/users`
 - GET `/api/users/:user`
 - DELETE `/api/users`
 - DELETE `/api/users/:user`
+
+### Orders route
 
 - POST `/api/orders`
 - GET `/api/orders`

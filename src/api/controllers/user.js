@@ -6,7 +6,7 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
   if (!user) {
     return next(new ErrorResponse(404, 'Users not found'));
   }
-  res.status(200).json({ status: 'Users found', user });
+  res.status(200).json({ message: 'Users found', user });
 });
 
 exports.getUser = asyncHandler(async (req, res, next) => {
@@ -14,7 +14,7 @@ exports.getUser = asyncHandler(async (req, res, next) => {
   if (!user) {
     return next(new ErrorResponse(404, 'User name not found'));
   }
-  res.status(200).json({ status: 'User found', user });
+  res.status(200).json({ message: 'User found', user });
 });
 
 exports.postUser = asyncHandler(async (req, res) => {
@@ -34,5 +34,5 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
   if (!user) {
     return next(new ErrorResponse(404, 'User not found'));
   }
-  res.status(200).json({ status: 'User deleted successfuly', user });
+  res.status(200).json({ message: 'User deleted successfuly', user });
 });
