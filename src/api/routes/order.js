@@ -7,11 +7,11 @@ const route = new Router();
 module.exports = (app) => {
   app.use('/orders', route);
 
-  route.get('/all', controllers.getOrders);
+  route.get('/', controllers.getOrders);
 
   route.get('/:id', controllers.getOrder);
 
-  route.delete('/all', controllers.deleteOrders);
+  route.delete('/', controllers.deleteOrders);
 
   route.delete('/:id', controllers.deleteOrder);
 

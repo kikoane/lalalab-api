@@ -7,11 +7,11 @@ const route = new Router();
 module.exports = (app) => {
   app.use('/users', route);
 
-  route.get('/all', controllers.getUsers);
+  route.get('/', controllers.getUsers);
 
   route.get('/:name', controllers.getUser);
 
-  route.delete('/all', controllers.deleteUsers);
+  route.delete('/', controllers.deleteUsers);
 
   route.delete('/:name', controllers.deleteUser);
 

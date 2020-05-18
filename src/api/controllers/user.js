@@ -14,7 +14,7 @@ exports.getUser = asyncHandler(async (req, res, next) => {
   if (!user) {
     return next(new ErrorResponse(404, 'User name not found'));
   }
-  res.json({ status: 'User found', user });
+  res.status(200).json({ status: 'User found', user });
 });
 
 exports.postUser = asyncHandler(async (req, res) => {
