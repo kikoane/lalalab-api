@@ -1,15 +1,17 @@
 const { Router } = require('express');
 const { celebrate, Joi } = require('celebrate');
-const { getAllUsers, getOneUser, createUser } = require('../controllers/user');
+const controllers = require('../controllers/user');
 
 const route = new Router();
 
 module.exports = (app) => {
   app.use('/users', route);
 
-  route.get('/all', getAllUsers);
+  route.get('/all', controllers.getUsers);
 
-  route.get('/:name', getOneUser);
+  route.delete('/all', controllers.deleteUsers);
+
+  route.get('/:name', controllers.getUser);
 
   route.post(
     '/',
@@ -19,6 +21,6 @@ module.exports = (app) => {
         email: Joi.string().required(),
       }),
     }),
-    createUser,
+    controllers.postUser,
   );
 };
